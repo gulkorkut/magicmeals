@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 class RecipeCard extends StatelessWidget {
-  final String? title;
+  final String title;
   final String? imgURL;//url for now
   final double? height;
   final double? width;
@@ -20,25 +20,33 @@ class RecipeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){} ,// will open the detailed recipe page
-      borderRadius: BorderRadius.circular(20),
-      child: Column(
-        children: [
-          const Text(
-            "Pizza",
-            style: TextStyle(
-              fontSize: 50,
-              fontWeight: FontWeight.bold,
+      onTap: () {},
+      child: Container(
+          height: height ,
+          width: width ,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            image: DecorationImage(
+                image: NetworkImage("https://cdn.yemek.com/mncrop/600/315/uploads/2017/01/ev-usulu-pizza-yeni.jpg"),
+                fit:BoxFit.cover
             ),
           ),
-          Ink.image(
-            fit: BoxFit.cover,
-            width: 200,
-            height: 100,
-            image: const NetworkImage("https://cdn.yemek.com/mncrop/600/315/uploads/2017/01/ev-usulu-pizza-yeni.jpg"),
-          ),
-        ],
-      ),
+          child: Card(
+            color: Colors.transparent,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            shadowColor: Colors.grey,
+            child: Center(
+              child: Text(title,
+                style: const TextStyle(
+                  fontSize: 30,
 
+                ),
+
+              ),
+            )
+          )
+      ),
     );
-  }}
+  }
+}
+

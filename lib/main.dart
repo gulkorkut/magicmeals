@@ -4,6 +4,7 @@ import 'package:magicmeals202/widgets/recipe_card.dart';
 
 void main() {
   runApp(const MyApp());
+  
 }
 
 class MyApp extends StatelessWidget {

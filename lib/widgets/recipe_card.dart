@@ -25,11 +25,15 @@ class RecipeCard extends StatelessWidget {
       child: Column(
         children: [
           const Text(
-            "Pizza"
+            "Pizza",
+            style: TextStyle(
+              fontSize: 50,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           Ink.image(
             fit: BoxFit.cover,
-            width: 400,
+            width: 200,
             height: 100,
             image: const NetworkImage("https://cdn.yemek.com/mncrop/600/315/uploads/2017/01/ev-usulu-pizza-yeni.jpg"),
           ),

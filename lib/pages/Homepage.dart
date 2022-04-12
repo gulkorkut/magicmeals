@@ -16,9 +16,19 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
+        title: Text(
+          "Home Page",
+          style: TextStyle(),
+        ),
+        centerTitle: true,
       ),
-      body: RecipeCard("title", "", 100, 400),
+      body: ListView.separated(
+          separatorBuilder: (BuildContext context, int index) => const Divider(),
+          itemCount: 5,
+          itemBuilder: (BuildContext context, int index){
+            return RecipeCard("Pizza","",100,300);
+          }
+          ),
     );
   }
 

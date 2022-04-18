@@ -17,6 +17,18 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.lime,
       appBar: AppBar(
+        backgroundColor: Colors.lime,
+        actions: <Widget>[
+          IconButton(
+              onPressed: (){
+
+              },
+              icon: const Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+          )
+        ],
         title: const Text(
           "Home Page",
           style: TextStyle(),

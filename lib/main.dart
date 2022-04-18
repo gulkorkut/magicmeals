@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -11,13 +12,15 @@ import 'classes/recipe.dart';
 
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp());
   
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
+  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -25,6 +28,7 @@ class MyApp extends StatelessWidget {
 
       providers: [
         ChangeNotifierProvider<Recipe>(create: (_) => Recipe(
+          id: 0,
           title: "Default Food",
           imageUrl: "No URL Provided",
           ratingCount: 0,
@@ -36,7 +40,20 @@ class MyApp extends StatelessWidget {
           "/detailed_page": (ctx) => const RecipeDetailed(),
           "/add_recipe": (ctx) => const RecipeAdd(),
         },
-        home: HomePage(),
+        home: FutureBuilder(
+            future: _fbApp,
+            builder: (context,snapshot){
+              if (snapshot.hasError){
+                return Text("An error occured");
+              }
+              else if (snapshot.hasData){
+                return HomePage();
+              }
+              else {
+                return CircularProgressIndicator();
+              }
+            }
+        ),
       ),
     );
   }

@@ -20,7 +20,9 @@ class RecipeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, '/detailed_page');
+      },
       child: Container(
           height: height ,
           width: width ,

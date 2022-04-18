@@ -27,6 +27,11 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
           child: Center(
             child: Column(
               children: [
+                ClipRRect(
+                  child: Image.network(recipe.imageUrl),
+                ),
+                const SizedBox(height: 15),
+                // description,preparation etc will be here
                 const Text(
                   'Rate',
                   style: TextStyle(fontSize: 24),

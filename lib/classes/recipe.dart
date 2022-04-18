@@ -1,5 +1,7 @@
 
-class Recipe {
+import 'package:flutter/cupertino.dart';
+
+class Recipe with ChangeNotifier {
   String title;
   String imageUrl;
   int ratings;

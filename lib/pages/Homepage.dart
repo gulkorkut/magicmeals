@@ -15,8 +15,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.lime,
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Home Page",
           style: TextStyle(),
         ),
@@ -26,7 +27,7 @@ class _HomePageState extends State<HomePage> {
           separatorBuilder: (BuildContext context, int index) => const Divider(),
           itemCount: 5,
           itemBuilder: (BuildContext context, int index){
-            return RecipeCard("Pizza","",100,300);
+            return RecipeCard("Pizza","https://cdn.yemek.com/mncrop/600/315/uploads/2017/01/ev-usulu-pizza-yeni.jpg",100,300);
           }
           ),
     );

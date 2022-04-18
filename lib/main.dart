@@ -5,6 +5,9 @@ import 'package:magicmeals202/pages/Homepage.dart';
 import 'package:magicmeals202/pages/recipe_detailed_page.dart';
 import 'package:magicmeals202/pages/recipe_add_page.dart';
 import 'package:magicmeals202/widgets/recipe_card.dart';
+import 'package:provider/provider.dart';
+
+import 'classes/recipe.dart';
 
 
 void main() {
@@ -18,12 +21,23 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      routes: {
-        "/detailed_page": (ctx) => const RecipeDetailed(),
-        "/add_recipe": (ctx) => const RecipeAdd(),
-      },
-      home: HomePage(),
+    return MultiProvider(
+
+      providers: [
+        ChangeNotifierProvider<Recipe>(create: (_) => Recipe(
+          title: "Default Food",
+          imageUrl: "No URL Provided",
+          ratingCount: 0,
+          ratings: 0,
+        )),
+      ],
+      child: MaterialApp(
+        routes: {
+          "/detailed_page": (ctx) => const RecipeDetailed(),
+          "/add_recipe": (ctx) => const RecipeAdd(),
+        },
+        home: HomePage(),
+      ),
     );
   }
 }

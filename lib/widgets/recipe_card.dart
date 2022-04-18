@@ -1,10 +1,13 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../classes/recipe.dart';
 
 class RecipeCard extends StatelessWidget {
   final String title;
-  final String? imgURL;//url for now
+  final String imgURL;//url for now
   final double? height;
   final double? width;
 
@@ -21,6 +24,8 @@ class RecipeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        Provider.of<Recipe>(context, listen: false).title=title;
+        Provider.of<Recipe>(context, listen: false).imageUrl=imgURL;
         Navigator.pushNamed(context, '/detailed_page');
       },
       child: Container(
@@ -29,14 +34,13 @@ class RecipeCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             image: DecorationImage(
-                image: NetworkImage("https://cdn.yemek.com/mncrop/600/315/uploads/2017/01/ev-usulu-pizza-yeni.jpg"),
+                image: NetworkImage(imgURL),
                 fit:BoxFit.cover
             ),
           ),
           child: Card(
             color: Colors.transparent,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            shadowColor: Colors.grey,
             child: Center(
               child: Text(title,
                 style: const TextStyle(

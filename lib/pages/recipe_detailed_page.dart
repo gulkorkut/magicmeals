@@ -2,6 +2,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:provider/provider.dart';
+
+import '../classes/recipe.dart';
 
 class RecipeDetailed extends StatefulWidget {
   const RecipeDetailed({Key? key}) : super(key: key);
@@ -14,9 +17,10 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
   @override
   double? _ratingValue;
   Widget build(BuildContext context) {
+  final recipe = Provider.of<Recipe>(context,listen : false);
     return Scaffold(
         appBar: AppBar(
-          title: const Text('just want to see rating'),
+          title: Text(recipe.title),
         ),
         body: Padding(
           padding: const EdgeInsets.all(25),

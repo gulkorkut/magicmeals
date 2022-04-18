@@ -13,7 +13,8 @@ import 'classes/recipe.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  runApp(MyApp(
+  ));
   
 }
 
@@ -36,24 +37,12 @@ class MyApp extends StatelessWidget {
         )),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         routes: {
           "/detailed_page": (ctx) => const RecipeDetailed(),
           "/add_recipe": (ctx) => const RecipeAdd(),
         },
-        home: FutureBuilder(
-            future: _fbApp,
-            builder: (context,snapshot){
-              if (snapshot.hasError){
-                return Text("An error occured");
-              }
-              else if (snapshot.hasData){
-                return HomePage();
-              }
-              else {
-                return CircularProgressIndicator();
-              }
-            }
-        ),
+        home: HomePage(),
       ),
     );
   }

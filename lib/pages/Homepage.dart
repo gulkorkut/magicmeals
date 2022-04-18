@@ -15,16 +15,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lime,
+      backgroundColor:  const Color(0xff121421),
       appBar: AppBar(
-        backgroundColor: Colors.lime,
+        backgroundColor:  const Color(0xff121421),
         actions: <Widget>[
           IconButton(
-              onPressed: (){
+              onPressed: (
+                  ){
+                Navigator.pushNamed(context, '/add_recipe');
 
               },
               icon: const Icon(
-                Icons.search,
+                Icons.add,
                 color: Colors.white,
               ),
           )

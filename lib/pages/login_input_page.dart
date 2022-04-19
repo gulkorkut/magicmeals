@@ -53,16 +53,21 @@ class _LoginInputScreenState extends State<LoginInputScreen> {
                 hint: "*********",
               ),
             ),
-            const Align(
+            Align(
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: EdgeInsets.only(bottom: 20),
-                child: AppText(
-                  color: vermilion,
-                  size: 17,
-                  weight: FontWeight.w600,
-                  text: "Forgot passcode?",
-                  textAlign: TextAlign.start,
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.pushNamed(context, "/home_page");
+                  },
+                  child: const AppText(
+                    color: vermilion,
+                    size: 17,
+                    weight: FontWeight.w600,
+                    text: "Forgot passcode?",
+                    textAlign: TextAlign.start,
+                  ),
                 ),
               ),
             ),

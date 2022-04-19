@@ -14,7 +14,13 @@ class _RecipeAddState extends State<RecipeAdd> {
   List controllers = List.generate(5, (index) => TextEditingController());
   String URL = "";
   final _form = GlobalKey<FormState>();
-  List names = ["ID", "Title", "Ingredients", "Preparation"];
+  List names = ["Title", "Description", "Ingredients", "Preparation"];
+  String temp_title ="";
+  String temp_desc ="";
+  String temp_ingre ="";
+  String temp_prep ="";
+  String temp_url ="";
+
   @override
   void initState() {
     _imageUrlFocusNode.addListener(_updateImageUrl);
@@ -51,7 +57,11 @@ class _RecipeAddState extends State<RecipeAdd> {
         actions: [
           IconButton(
             onPressed: () {
-
+              temp_title = controllers[0].text;
+              temp_desc = controllers[1].text;
+              temp_ingre = controllers[2].text;
+              temp_prep = controllers[3].text;
+              temp_url = controllers[4].text;
             },
             icon: const Icon(Icons.save),
           )

@@ -63,8 +63,8 @@ class _RecipeAddState extends State<RecipeAdd> {
               temp_ingre = controllers[2].text;
               temp_prep = controllers[3].text;
               temp_url = controllers[4].text;
-              await ref.set({
-                'ID' : 0,
+              String? newkey = ref.push().key;
+              await ref.child(newkey!).set({
                 'title' :temp_title,
                 'description' : temp_desc,
                 'ingredients' : temp_ingre,

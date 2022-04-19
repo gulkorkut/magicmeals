@@ -44,7 +44,20 @@ class MyApp extends StatelessWidget {
           "/detailed_page": (ctx) => const RecipeDetailed(),
           "/add_recipe": (ctx) => const RecipeAdd(),
         },
-        home: HomePage(),
+        home: FutureBuilder(
+            future: _fbApp,
+            builder: (context,snapshot){
+              if (snapshot.hasError){
+                return Text("An error occured");
+              }
+              else if (snapshot.hasData){
+                return HomePage();
+              }
+              else {
+                return CircularProgressIndicator();
+              }
+            }
+        ),
       ),
     );
   }

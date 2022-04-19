@@ -8,17 +8,14 @@ class Recipe with ChangeNotifier {
   String description;
   //ingredients
   String preparation;
-  int ratings;
+  double ratings;
   int ratingCount;
   List<Map<String, dynamic>> comments = <Map<String,dynamic>> [
       {
       'commenter': '',
-      'comment' : ''
+      'comment' : '',
       }
     ];
-  //description
-  //comments
-  //preparation
 
   Recipe({
     required this.id,
@@ -28,7 +25,6 @@ class Recipe with ChangeNotifier {
     required this.imageUrl,
     required this.ratings,
     required this.ratingCount
-
   });
 
 }

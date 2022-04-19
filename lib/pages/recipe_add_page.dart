@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -49,19 +50,35 @@ class _RecipeAddState extends State<RecipeAdd> {
 
   @override
   Widget build(BuildContext context) {
-
+    DatabaseReference ref = FirebaseDatabase.instance.ref("recipes/");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff515979),
         title: const Text("Add Recipe"),
         actions: [
           IconButton(
-            onPressed: () {
+            onPressed: () async {
               temp_title = controllers[0].text;
               temp_desc = controllers[1].text;
               temp_ingre = controllers[2].text;
               temp_prep = controllers[3].text;
               temp_url = controllers[4].text;
+              await ref.set({
+                'ID' : 0,
+                'title' :temp_title,
+                'description' : temp_desc,
+                'ingredients' : temp_ingre,
+                'preparation' : temp_prep,
+                'imageURL' : temp_url,
+                'ratings': 0,
+                'ratingCount' : 0,
+                'comments' :[
+                {
+                  'commenter' : '',
+                  'comment' : '',
+                }
+                ]
+              });
             },
             icon: const Icon(Icons.save),
           )

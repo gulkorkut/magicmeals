@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: (
                   ){
                 Navigator.pushNamed(context, '/add_recipe');
-                Navigator.pushNamed(context, '/add_recipe');
+                //Navigator.pushNamed(context, '/add_recipe');
               },
               icon: const Icon(
                 Icons.add,

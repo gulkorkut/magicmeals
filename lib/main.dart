@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:magicmeals202/pages/Homepage.dart';
+import 'package:magicmeals202/pages/intro_page.dart';
+import 'package:magicmeals202/pages/login_input_page.dart';
+import 'package:magicmeals202/pages/login_page.dart';
 import 'package:magicmeals202/pages/recipe_detailed_page.dart';
 import 'package:magicmeals202/pages/recipe_add_page.dart';
 import 'package:magicmeals202/widgets/recipe_card.dart';
@@ -43,6 +46,9 @@ class MyApp extends StatelessWidget {
         routes: {
           "/detailed_page": (ctx) => const RecipeDetailed(),
           "/add_recipe": (ctx) => const RecipeAdd(),
+          "/login_page": (ctx) => LoginScreen(),
+          "/home_page": (ctx) => const HomePage(),
+          "/login_input_page": (ctx) => LoginInputScreen(),
         },
         home: FutureBuilder(
             future: _fbApp,
@@ -51,7 +57,7 @@ class MyApp extends StatelessWidget {
                 return Text("An error occured");
               }
               else if (snapshot.hasData){
-                return HomePage();
+                return IntroScreen();
               }
               else {
                 return CircularProgressIndicator();

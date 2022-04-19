@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:magicmeals202/widgets/recipe_card.dart';
 
+
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -23,7 +25,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: (
                   ){
                 Navigator.pushNamed(context, '/add_recipe');
-
+                Navigator.pushNamed(context, '/add_recipe');
               },
               icon: const Icon(
                 Icons.add,

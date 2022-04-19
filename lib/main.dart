@@ -32,6 +32,8 @@ class MyApp extends StatelessWidget {
           id: 0,
           title: "Default Food",
           imageUrl: "No URL Provided",
+          description: "Default Description",
+          preparation: "Default Preparation",
           ratingCount: 0,
           ratings: 0,
         )),

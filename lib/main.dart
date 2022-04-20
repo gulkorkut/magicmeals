@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
 
       providers: [
         ChangeNotifierProvider<Recipe>(create: (_) => Recipe(
-          id: 0,
+          id: "",
           title: "Default Food",
           imageUrl: "No URL Provided",
           description: "Default Description",

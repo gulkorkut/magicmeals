@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 
 class Recipe with ChangeNotifier {
-  int id;
+  String id;
   String title;
   String imageUrl;
   String description;

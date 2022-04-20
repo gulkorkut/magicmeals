@@ -34,9 +34,11 @@ class MyApp extends StatelessWidget {
           title: "Default Food",
           imageUrl: "No URL Provided",
           description: "Default Description",
+          ingredients: "Default Ingredients",
           preparation: "Default Preparation",
           ratingCount: 0,
           ratings: 0,
+          comments: [],
         )),
       ],
       child: MaterialApp(

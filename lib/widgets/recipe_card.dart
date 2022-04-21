@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../classes/recipe.dart';
 
 class RecipeCard extends StatelessWidget {
+  final String id;
   final String title;
   final String imgURL;//url for now
   final String description;
@@ -17,6 +18,7 @@ class RecipeCard extends StatelessWidget {
   final double width;
 
    const RecipeCard(
+      this.id,
       this.title,
       this.imgURL,
       this.description,
@@ -34,6 +36,7 @@ class RecipeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        Provider.of<Recipe>(context, listen: false).id=id;
         Provider.of<Recipe>(context, listen: false).title=title;
         Provider.of<Recipe>(context, listen: false).imageUrl=imgURL;
         Provider.of<Recipe>(context, listen: false).description=description;

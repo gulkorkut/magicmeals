@@ -17,6 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool isLoading = true;
+  List<String> idList = [];
   List<String> titleList = [];
   List<String> imageList = [];
   List<String> descriptionList = [];
@@ -36,6 +37,7 @@ class _HomePageState extends State<HomePage> {
         return;
       }
       extractedData.forEach((blogId, blogData) {
+        idList.add(blogData["id"]);
         titleList.add(blogData["title"]);
         imageList.add(blogData["imageURL"]);
         descriptionList.add(blogData["description"]);
@@ -95,6 +97,7 @@ class _HomePageState extends State<HomePage> {
           itemCount: titleList.length,
           itemBuilder: (BuildContext context, int index) {
             return RecipeCard(
+                idList[index],
                 titleList[index],
                 imageList[index],
                 descriptionList[index],

@@ -9,7 +9,7 @@ class IntroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: sunset_orange,
+      backgroundColor: Color.fromRGBO(255, 138, 120, 1),
       body: Stack(
         children: [
           Column(
@@ -67,7 +67,7 @@ class IntroScreen extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.1,
               decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                    colors: <Color>[vermilion_10, vermilion_100],
+                    colors: <Color>[Color.fromRGBO(255, 138, 120, 1), Color.fromRGBO(255, 138, 120, 1)],
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(8))),
             ),

@@ -19,14 +19,16 @@ class _HomePageState extends State<HomePage> {
   bool isLoading = true;
   List<String> titleList = [];
   List<String> imageList = [];
+  List<String> descriptionList = [];
+  List<String> ingredientsList = [];
+  List<String> preparationList = [];
+  List<int> ratingsList = [];
+  List<int> ratingCountList = [];
+
   Future<void> readData() async {
 
-    // Please replace the Database URL
-    // which we will get in “Add Realtime Database”
-    // step with DatabaseURL
 
     var url = "https://magicmeals202-default-rtdb.europe-west1.firebasedatabase.app/recipes.json";
-    // Do not remove “data.json”,keep it as it is
     try {
       final response = await http.get(Uri.parse(url));
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
@@ -35,9 +37,13 @@ class _HomePageState extends State<HomePage> {
       }
       extractedData.forEach((blogId, blogData) {
         titleList.add(blogData["title"]);
-        print(titleList.last);
         imageList.add(blogData["imageURL"]);
-        print(imageList.last);
+        descriptionList.add(blogData["description"]);
+        ingredientsList.add(blogData["ingredients"]);
+        preparationList.add(blogData["preparation"]);
+        ratingsList.add(blogData["ratings"]);
+        ratingCountList.add(blogData["ratingCount"]);
+
       });
       setState(() {
         isLoading = false;
@@ -91,8 +97,14 @@ class _HomePageState extends State<HomePage> {
             return RecipeCard(
                 titleList[index],
                 imageList[index],
+                descriptionList[index],
+                ingredientsList[index],
+                preparationList[index],
+                ratingsList[index],
+                ratingCountList[index],
                 200,
-                100);
+                100,
+            );
           }),
     );
   }

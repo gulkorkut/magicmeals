@@ -32,6 +32,13 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
                     child: Image.network(recipe.imageUrl),
                   ),
                   const SizedBox(height: 15),
+                  Text("Description: "+recipe.description, style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 15),
+                  Text("Ingredients: "+recipe.ingredients,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 15),
+                  Text("Preparation: "+recipe.preparation,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 15),
                   // description,preparation etc will be here
                   const Text(
                     'Rate',
@@ -39,13 +46,13 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
                   ),
                   const SizedBox(height: 25),
                   // implement the rating bar
-                  Text(recipe.ingredients),
+
                   Transform.scale(
                     scale: 1,
                     child: RatingBar(
                         initialRating: 0,
                         direction: Axis.horizontal,
-                        allowHalfRating: true,
+                        allowHalfRating: false,
                         itemCount: 5,
                         ratingWidget: RatingWidget(
                             full: const Icon(Icons.star,

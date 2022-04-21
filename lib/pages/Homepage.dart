@@ -15,26 +15,73 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Recipe> recipes = [];
+
+
+
+
 
   Future<void> getRecipesFromDB() async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref("recipes/");
 
+    recipes = [];
+
+
+    DatabaseReference ref = FirebaseDatabase.instance.ref('/recipes');
     DatabaseEvent event = await ref.once();
 
-    print(event.snapshot.value);
+
+
+    for (DataSnapshot postSnapshot in event.snapshot.children){
+
+      Map<String, dynamic> data = jsonDecode(jsonEncode(postSnapshot.value));
+      recipes.add(Recipe.fromJson(data));
+      //Recipe sample = Recipe.fromJson(data);
+      //print(sample.title);
+      //print(postSnapshot.value.runtimeType);
+      //print("---");
+      //print(Map<String, dynamic>.from(Map<String, dynamic>.from(postSnapshot.value as dynamic)).runtimeType);
+      //Recipe sample = Recipe.fromJson(Map<String, dynamic>.from(postSnapshot.value as dynamic));
+      //print("----");
+      //print(postSnapshot.value.runtimeType);
+      //print("---_-------------------------------");
+      //recipes.add(jsonDecode(jsonEncode(postSnapshot.value)));
+    }
+    //print(recipes.length);
+
+
+
+
+    //final decodedData = jsonDecode(jsonEncode(event.snapshot.value));
+    //print(decodedData);
+    //print(Recipe.fromJson(decodedData));
+
+
+    //Map<String, dynamic> dataValue = event.snapshot.value as dynamic;
+
+    //recipes = List<Recipe>.from(dataValue['recipes']
+    //    .map((x) => Recipe.fromJson(x as dynamic)));
+
+    //final parsed = decodedData.cast<Map<String, dynamic>>();
+
+    //print(parsed);
+
+    //return parsed.map<Recipe>((json) => Recipe.fromJson(json)).toList();
+
+    //print(event.snapshot.value);
+
+
 
   }
 
-  List<Recipe> parseRecipes(String responseBody) {
+  /*List<Recipe> parseRecipe(String responseBody) {
     final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
 
     return parsed.map<Recipe>((json) => Recipe.fromJson(json)).toList();
   }
-
+*/
 
   @override
   Widget build(BuildContext context) {
-
     getRecipesFromDB();
     return Scaffold(
       backgroundColor: const Color(0xff121421),

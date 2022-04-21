@@ -46,19 +46,19 @@ import 'package:flutter/cupertino.dart';
 
 }
 */
+/*
+RecipeClass RecipeClassFromJson(String str) => RecipeClass.fromJson(json.decode(str));
 
-Magicmeals202DefaultRtdbExport magicmeals202DefaultRtdbExportFromJson(String str) => Magicmeals202DefaultRtdbExport.fromJson(json.decode(str));
+String RecipeClassToJson(RecipeClass data) => json.encode(data.toJson());
 
-String magicmeals202DefaultRtdbExportToJson(Magicmeals202DefaultRtdbExport data) => json.encode(data.toJson());
-
-class Magicmeals202DefaultRtdbExport {
-  Magicmeals202DefaultRtdbExport({
+class RecipeClass {
+  RecipeClass({
     required this.recipes,
   });
 
   Map<String, Recipe> recipes;
 
-  factory Magicmeals202DefaultRtdbExport.fromJson(Map<String, dynamic> json) => Magicmeals202DefaultRtdbExport(
+  factory RecipeClass.fromJson(Map<String, dynamic> json) => RecipeClass(
     recipes: Map.from(json["recipes"]).map((k, v) => MapEntry<String, Recipe>(k, Recipe.fromJson(v))),
   );
 
@@ -66,6 +66,8 @@ class Magicmeals202DefaultRtdbExport {
     "recipes": Map.from(recipes).map((k, v) => MapEntry<String, dynamic>(k, v.toJson())),
   };
 }
+
+ */
 
 class Recipe with ChangeNotifier {
   Recipe({

@@ -60,7 +60,7 @@ class _CommentPageState extends State<CommentPage> {
       body: Container(
         child: CommentBox(
           userImage:
-          "https://lh3.googleusercontent.com/a-/AOh14GjRHcaendrf6gU5fPIVd8GIl1OgblrMMvGUoCBj4g=s400",
+          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
           child: commentChild(filedata),
           labelText: 'Write a comment...',
           withBorder: false,
@@ -72,7 +72,7 @@ class _CommentPageState extends State<CommentPage> {
                 var value = {
                   'name': 'New User',
                   'pic':
-                  'https://lh3.googleusercontent.com/a-/AOh14GjRHcaendrf6gU5fPIVd8GIl1OgblrMMvGUoCBj4g=s400',
+                  'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
                   'message': commentController.text
                 };
                 filedata.insert(0, value);

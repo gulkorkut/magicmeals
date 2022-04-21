@@ -45,9 +45,7 @@ class RecipeCard extends StatelessWidget {
               child: Text(title,
                 style: const TextStyle(
                   fontSize: 30,
-
                 ),
-
               ),
             )
           )

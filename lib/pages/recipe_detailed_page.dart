@@ -15,8 +15,9 @@ class RecipeDetailed extends StatefulWidget {
 class _RecipeDetailedState extends State<RecipeDetailed> {
   @override
   double? _ratingValue;
+
   Widget build(BuildContext context) {
-  final recipe = Provider.of<Recipe>(context,listen : false);
+    final recipe = Provider.of<Recipe>(context, listen: false);
     return Scaffold(
         appBar: AppBar(
           title: Text(recipe.title),
@@ -38,6 +39,7 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
                   ),
                   const SizedBox(height: 25),
                   // implement the rating bar
+                  Text(recipe.ingredients),
                   Transform.scale(
                     scale: 1,
                     child: RatingBar(
@@ -47,8 +49,7 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
                         itemCount: 5,
                         ratingWidget: RatingWidget(
                             full: const Icon(Icons.star,
-                                size: 15,
-                                color: Colors.black),
+                                size: 15, color: Colors.black),
                             half: const Icon(
                               Icons.star_half,
                               size: 15,
@@ -74,7 +75,9 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
                         color: Colors.black, shape: BoxShape.circle),
                     alignment: Alignment.center,
                     child: Text(
-                      _ratingValue != null ? _ratingValue.toString() : 'Rate it!',
+                      _ratingValue != null
+                          ? _ratingValue.toString()
+                          : 'Rate it!',
                       style: const TextStyle(color: Colors.white, fontSize: 30),
                     ),
                   )
@@ -82,10 +85,7 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
               ),
             ),
           ),
-        ));
-
-
-
-
+        )
+    );
   }
 }

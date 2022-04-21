@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:magicmeals202/widgets/recipe_card.dart';
+import 'package:http/http.dart' as http;
 
 import '../classes/recipe.dart';
 
@@ -15,27 +16,49 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool isLoading = true;
+  List<String> titleList = [];
+  List<String> imageList = [];
+  Future<void> readData() async {
 
-  Future<void> getRecipesFromDB() async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref("recipes/");
+    // Please replace the Database URL
+    // which we will get in “Add Realtime Database”
+    // step with DatabaseURL
 
-    DatabaseEvent event = await ref.once();
+    var url = "https://magicmeals202-default-rtdb.europe-west1.firebasedatabase.app/recipes.json";
+    // Do not remove “data.json”,keep it as it is
+    try {
+      final response = await http.get(Uri.parse(url));
+      final extractedData = json.decode(response.body) as Map<String, dynamic>;
+      if (extractedData == null) {
+        return;
+      }
+      extractedData.forEach((blogId, blogData) {
+        titleList.add(blogData["title"]);
+        print(titleList.last);
+        imageList.add(blogData["imageURL"]);
+        print(imageList.last);
+      });
+      setState(() {
+        isLoading = false;
+      });
+    } catch (error) {
 
-    print(event.snapshot.value);
-
+      print(error);
+      throw error;
+    }
   }
 
-  List<Recipe> parseRecipes(String responseBody) {
-    final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-
-    return parsed.map<Recipe>((json) => Recipe.fromJson(json)).toList();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    readData();
   }
 
 
   @override
   Widget build(BuildContext context) {
-
-    getRecipesFromDB();
     return Scaffold(
       backgroundColor: const Color(0xff121421),
       appBar: AppBar(
@@ -58,16 +81,18 @@ class _HomePageState extends State<HomePage> {
         ),
         centerTitle: true,
       ),
-      body: ListView.separated(
+      body: isLoading
+          ? CircularProgressIndicator()
+          : ListView.separated(
           separatorBuilder: (BuildContext context, int index) =>
               const Divider(),
-          itemCount: 5,
+          itemCount: titleList.length,
           itemBuilder: (BuildContext context, int index) {
             return RecipeCard(
-                "Pizza",
-                "https://cdn.yemek.com/mncrop/600/315/uploads/2017/01/ev-usulu-pizza-yeni.jpg",
-                100,
-                300);
+                titleList[index],
+                imageList[index],
+                200,
+                100);
           }),
     );
   }

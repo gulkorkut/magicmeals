@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:magicmeals202/pages/Homepage.dart';
+import 'package:magicmeals202/pages/comments_page.dart';
 import 'package:magicmeals202/pages/intro_page.dart';
 import 'package:magicmeals202/pages/login_input_page.dart';
 import 'package:magicmeals202/pages/login_page.dart';
@@ -49,6 +50,8 @@ class MyApp extends StatelessWidget {
           "/login_page": (ctx) => LoginScreen(),
           "/home_page": (ctx) => const HomePage(),
           "/login_input_page": (ctx) => LoginInputScreen(),
+          "/comments_page": (ctx) => CommentPage(),
+
         },
         home: FutureBuilder(
             future: _fbApp,

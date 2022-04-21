@@ -23,6 +23,15 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
     return Scaffold(
         appBar: AppBar(
           title: Text(recipe.title),
+          actions: <Widget>[
+            IconButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, "/comments_page");
+                },
+                icon: const Icon(
+              Icons.chat,
+            ))
+          ],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -77,7 +86,7 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
                               });
                             }),
                       ),
-                      SizedBox(width: 25,),
+                      SizedBox(width: 15,),
                       TextButton(
                           onPressed: (){
                             if (_ratingValue != null) {
@@ -104,7 +113,7 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
                     alignment: Alignment.center,
                     child: Text(
                       _ratingValue != null
-                          ? _ratingValue.toString()
+                          ? recipe.ratings.toString()
                           : 'Rate it!',
                       style: const TextStyle(color: Colors.white, fontSize: 30),
                     ),

@@ -57,6 +57,9 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -74,14 +77,22 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
             onPressed: () {
+
+            },
+            icon: const Icon(
+              Icons.search,
+              color: Colors.white,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
               Navigator.pushNamed(context, '/add_recipe');
-              //Navigator.pushNamed(context, '/add_recipe');
             },
             icon: const Icon(
               Icons.add,
               color: Colors.white,
             ),
-          )
+          ),
         ],
         title: const Text(
           "Home Page",

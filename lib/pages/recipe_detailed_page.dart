@@ -41,15 +41,6 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Container(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                             '⭐ ' + (_ratingValue/recipe.ratingCount).toStringAsFixed(2) + ' (' + count.toString() + ')' != null
-                                ?  '⭐ '+ (recipe.ratings/recipe.ratingCount).toStringAsFixed(2) + ' (' + count.toString() + ')'
-                                : 'Rate it!',
-                            style: const TextStyle(color: Colors.black, fontSize: 15),
-                          ),
-                        ),
                         GestureDetector(
                           onTap: () {
                             Navigator.pop(context);
@@ -59,6 +50,15 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
                           ),
                         ),
                       ],
+                    ),
+                    Container(
+                      alignment: Alignment.bottomRight,
+                      child: Text(
+                        '⭐ ' + (_ratingValue/recipe.ratingCount).toStringAsFixed(2) + ' (' + count.toString() + ')' != null
+                            ?  '⭐ '+ (recipe.ratings/recipe.ratingCount).toStringAsFixed(2) + ' (' + count.toString() + ')'
+                            : 'Rate it!',
+                        style: const TextStyle(color: Colors.black, fontSize: 15),
+                      ),
                     ),
                     SizedBox(height: 15,),
                     ClipRRect(

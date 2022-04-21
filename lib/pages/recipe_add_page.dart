@@ -80,6 +80,7 @@ class _RecipeAddState extends State<RecipeAdd> {
                 }
                 ]
               });
+              dispose();
             },
             icon: const Icon(Icons.save),
           )

@@ -103,20 +103,38 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
                           child: const Text("Rate this recipe!"))
                     ],
                   ),
-                  const SizedBox(height: 25),
+                  //const SizedBox(height: 25),
                   // Display the rate in number
-                  Container(
-                    width: 200,
-                    height: 200,
-                    decoration: const BoxDecoration(
-                        color: Colors.black, shape: BoxShape.circle),
-                    alignment: Alignment.center,
-                    child: Text(
-                      _ratingValue != null
-                          ? recipe.ratings.toString()
-                          : 'Rate it!',
-                      style: const TextStyle(color: Colors.white, fontSize: 30),
-                    ),
+                  Row(
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 100,
+                        decoration: const BoxDecoration(
+                            color: Colors.white, shape: BoxShape.circle),
+                        alignment: Alignment.bottomLeft,
+                        child: Text(
+                          _ratingValue != null
+                              ? "Total Rating:    "+recipe.ratings.toString()
+                              : 'Rate it!',
+                          style: const TextStyle(color: Colors.black, fontSize: 20),
+                        ),
+                      ),
+                      SizedBox(width: 150,),
+                      Container(
+                        width: 100,
+                        height: 100,
+                        decoration: const BoxDecoration(
+                            color: Colors.white, shape: BoxShape.circle),
+                        alignment: Alignment.bottomRight,
+                        child: Text(
+                          recipe.ratingCount != null
+                              ? "Rating Count: "+recipe.ratingCount.toString()
+                              : 'Rate it!',
+                          style: const TextStyle(color: Colors.black, fontSize: 20),
+                        )
+                      ),
+                    ],
                   )
                 ],
               ),

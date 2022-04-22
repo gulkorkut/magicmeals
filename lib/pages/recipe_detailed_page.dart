@@ -37,7 +37,7 @@ class _RecipeDetailedState extends State<RecipeDetailed> {
                           'Details for ' + recipe.title,
                           style: const TextStyle(
                             color: Color.fromRGBO(255, 138, 120, 1),
-                            fontSize: 22,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

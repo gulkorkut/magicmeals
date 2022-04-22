@@ -27,8 +27,6 @@ class _HomePageState extends State<HomePage> {
   List<int> ratingCountList = [];
 
   Future<void> readData() async {
-
-
     var url = "https://magicmeals202-default-rtdb.europe-west1.firebasedatabase.app/recipes.json";
     try {
       final response = await http.get(Uri.parse(url));
